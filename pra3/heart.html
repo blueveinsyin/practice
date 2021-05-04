@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>heart</title>
+    <style>
+        *{
+            margin: 0 0;
+            box-sizing: border-box;
+        }
+        
+        .wrapper{
+            width: 300px;
+            height: 300px;
+            margin:0  auto;
+            position: relative;
+            animation: 0.2s ease-out 0s infinite alternate jumpHeart;
+        }
+
+        .left{
+            position:absolute;
+            left: 37.5%;
+            top: 37.5%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 100%;
+        }
+
+        .mid{
+            position:absolute;
+            left: 50%;
+            top: 50%;
+            width: 100px;
+            height: 100px;
+            transform: translateX(-50%) translateY(-50%) rotate(45deg);
+            background-color: red;
+        }
+
+        .right{
+            position:absolute;
+            left: 62.5%;
+            top: 37.5%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 100%;
+        }
+
+        @keyframes jumpHeart {
+            from{
+                transform:scale(1,1);
+            }
+
+            to{
+                transform:scale(1.2,1.2);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="left"></div>
+        <div class="mid"></div>
+        <div class="right"></div>
+    </div>
+    
+
+</body>
+</html>
