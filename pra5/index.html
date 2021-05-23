@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画板</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="canvas"></div>
+    <script>
+        canvas.onmousemove = (e)=>{
+            let x = e.clientX
+            let y = e.clientY
+            let dot = document.createElement('div')
+            dot.style.position = 'absolute'
+            dot.style.left = x + 'px'
+            dot.style.top = y + 'px'
+            dot.style.width = 4 + 'px'
+            dot.style.height = 4 + 'px'
+            dot.style.marginLeft = '-2px'
+            dot.style.marginTop = '-2px'
+            dot.style.borderRadius = '50%'
+            dot.style.background = 'black'
+            canvas.appendChild(dot)
+        }
+    </script>
+    
+</body>
+</html>
