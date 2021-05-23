@@ -8,23 +8,32 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div id="canvas"></div>
+    <canvas id="canvas"></canvas>
     <script>
-        canvas.onmousemove = (e)=>{
-            let x = e.clientX
-            let y = e.clientY
-            let dot = document.createElement('div')
-            dot.style.position = 'absolute'
-            dot.style.left = x + 'px'
-            dot.style.top = y + 'px'
-            dot.style.width = 4 + 'px'
-            dot.style.height = 4 + 'px'
-            dot.style.marginLeft = '-2px'
-            dot.style.marginTop = '-2px'
-            dot.style.borderRadius = '50%'
-            dot.style.background = 'black'
-            canvas.appendChild(dot)
+
+        canvas.width = document.documentElement.clientWidth
+        canvas.height = document.documentElement.clientHeight
+        let ctx = canvas.getContext('2d')
+        
+        let start = false
+        ctx.fillStyle = 'black'
+        // ctx.strokeStyle = 'none'
+
+        canvas.onmousedown = () =>{
+            start = true
         }
+        canvas.onmousemove = (e) =>{
+            if(start){
+                ctx.beginPath()
+                ctx.arc(e.clientX, e.clientY,10,0,2*
+                Math.PI)
+                ctx.stroke()
+                ctx.fill() 
+            }
+        }
+        canvas.onmouseup = () =>{
+            start = false
+        }        
     </script>
     
 </body>
