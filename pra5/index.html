@@ -14,23 +14,50 @@
         canvas.width = document.documentElement.clientWidth
         canvas.height = document.documentElement.clientHeight
         let ctx = canvas.getContext('2d')
-        
-        let start = false
         ctx.fillStyle = 'black'
-        // ctx.strokeStyle = 'none'
-
-        canvas.onmousedown = () =>{
-            start = true
-        }
-        canvas.onmousemove = (e) =>{
-            if(start){
-                ctx.beginPath()
-                ctx.arc(e.clientX, e.clientY,10,0,2*
-                Math.PI)
-                ctx.stroke()
-                ctx.fill() 
+        ctx.lineWidth = 4
+        ctx.lineCap = 'round'
+        let start = false
+        let startx
+        let starty
+        let isTouchDevice = 'ontouchstart' in document.documentElement
+        
+        if(isTouchDevice){
+            canvas.ontouchstart = (e) =>{
+                touchx = e.touches[0].clientX
+                touchy = e.touches[0].clienty
+            }
+            canvas.ontouchmove = (e) =>{
+                console.log(touchx)
+                drawLine(touchx,touchy,e.touches[0].clientX,e.touches[0].clientY)
+                touchx = e.touches[0].clientX
+                touchy = e.touches[0].clientY
             }
         }
+
+        function drawLine(x1,y1,x2,y2){
+            ctx.beginPath();
+            ctx.moveTo(x1,y1);
+            ctx.lineTo(x2,y2);
+            ctx.stroke()
+
+        }
+
+        canvas.onmousedown = (e) =>{
+            start = true
+            startx = e.clientX
+            starty = e.clientY
+        }
+
+        canvas.onmousemove = (e) =>{
+            if(start){
+                drawLine(startx,starty,e.clientX,e.clientY)
+                console.log(startx,starty,e.clientX,e.clientY)
+                startx = e.clientX
+                starty = e.clientY
+            }
+        }
+
         canvas.onmouseup = () =>{
             start = false
         }        
