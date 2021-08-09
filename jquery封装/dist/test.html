@@ -1,0 +1,34 @@
+window.jQuery = function(selector){
+    // 请补全
+    let elements
+    if(selector instanceof Array){
+        elements = selector
+    }else if(typeof selector === 'string'){
+        elements = document.querySelectorAll(selector)
+    }
+
+    return {
+      addClass(classString){
+  //         请补全
+        for(let i = 0; i < elements.length; i++){
+            elements[i].classList.add(classString)
+        }
+        return this
+      },
+      find(string){
+  //         请补全
+        let result = []
+        for(let i = 0; i < elements.length; i++){
+            result = result.concat(Array.from(elements[i].querySelectorAll
+                (string)))
+            console.log(result)
+        }
+        return jQuery(result)
+      }
+    }
+  }
+
+  window.$ = window.jQuery
+   // 请确保这句话成功执行
+  $('#test').find('.child').addClass('red')
+<script src="/test.54eb216e.js"></script>
